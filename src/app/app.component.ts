@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  
+   userData = [];
+  
+  constructor(private _data : DataService) {}
+
+  get(){
+
+    this._data.getDataa()
+    .subscribe(res => this.userData = res);
+
+  };
+
+  post(){
+
+    this._data.postJSON()
+    .subscribe(res => this.userData = res);
+
+  }
+
 }
